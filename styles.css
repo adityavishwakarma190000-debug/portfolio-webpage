@@ -6,18 +6,18 @@
 /* ====== CSS CUSTOM PROPERTIES ====== */
 :root {
     /* === NEON COLORS === */
-    --neon-cyan: #00f0ff;
-    --neon-cyan-rgb: 0, 240, 255;
-    --neon-magenta: #ff00e5;
-    --neon-magenta-rgb: 255, 0, 229;
-    --neon-green: #39ff14;
-    --neon-green-rgb: 57, 255, 20;
-    --neon-purple: #b026ff;
-    --neon-purple-rgb: 176, 38, 255;
-    --neon-blue: #4d4dff;
-    --neon-blue-rgb: 77, 77, 255;
-    --neon-yellow: #e6ff00;
-    --neon-yellow-rgb: 230, 255, 0;
+    --neon-cyan: #ff0033;
+    --neon-cyan-rgb: 255, 0, 51;
+    --neon-magenta: #ff4d4d;
+    --neon-magenta-rgb: 255, 77, 77;
+    --neon-green: #ff1a1a;
+    --neon-green-rgb: 255, 26, 26;
+    --neon-purple: #b3001f;
+    --neon-purple-rgb: 179, 0, 31;
+    --neon-blue: #ff0033;
+    --neon-blue-rgb: 255, 0, 51;
+    --neon-yellow: #ff8a8a;
+    --neon-yellow-rgb: 255, 138, 138;
 
     /* === PRIMARY ACCENT (used for links, buttons, highlights) === */
     --accent: var(--neon-cyan);
@@ -28,10 +28,10 @@
 
     /* === DARK BACKGROUNDS === */
     --bg-primary: #000000;
-    --bg-secondary: #050510;
-    --bg-elevated: #0a0a1a;
-    --bg-card: #0d0d20;
-    --bg-card-hover: #12122a;
+    --bg-secondary: #0a0003;
+    --bg-elevated: #140308;
+    --bg-card: #180409;
+    --bg-card-hover: #22060d;
 
     /* === TEXT === */
     --text-primary: #f0f0f5;
@@ -42,8 +42,8 @@
     /* === BORDERS & SURFACES === */
     --border-color: rgba(255, 255, 255, 0.06);
     --border-glow: rgba(var(--accent-rgb), 0.2);
-    --surface-glass: rgba(10, 10, 30, 0.6);
-    --surface-glass-hover: rgba(10, 10, 30, 0.8);
+    --surface-glass: rgba(20, 3, 8, 0.6);
+    --surface-glass-hover: rgba(20, 3, 8, 0.8);
 
     /* === TYPOGRAPHY === */
     --font-heading: 'Outfit', sans-serif;
@@ -914,10 +914,7 @@ body.cursor-hover .custom-cursor-ring {
 
 /* ====== ABOUT SECTION ====== */
 .about-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    align-items: center;
+    display: block;
 }
 
 .about-intro {

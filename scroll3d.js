@@ -48,38 +48,38 @@
     function getKeyframes() {
         if (isMobile()) {
             return {
-                hero:     { x: 80, y: 15, rotX: 0,   rotY: 0,   rotZ: 0,   scale: 0.6, glowIntensity: 0.6, glowColor: '0, 240, 255' },
+                hero:     { x: 80, y: 15, rotX: 0,   rotY: 0,   rotZ: 0,   scale: 0.6, glowIntensity: 0.6, glowColor: '255, 0, 51' },
                 about:    { x: 85, y: 20, rotX: 45,  rotY: 90,  rotZ: 15,  scale: 0.5, glowIntensity: 0.4, glowColor: '176, 38, 255' },
                 services: { x: 15, y: 15, rotX: 90,  rotY: 180, rotZ: 30,  scale: 0.45, glowIntensity: 0.3, glowColor: '255, 0, 229' },
                 projects: { x: 85, y: 80, rotX: 135, rotY: 270, rotZ: 45,  scale: 0.4, glowIntensity: 0.3, glowColor: '57, 255, 20' },
-                contact:  { x: 50, y: 20, rotX: 180, rotY: 360, rotZ: 60,  scale: 0.5, glowIntensity: 0.5, glowColor: '0, 240, 255' },
+                contact:  { x: 50, y: 20, rotX: 180, rotY: 360, rotZ: 60,  scale: 0.5, glowIntensity: 0.5, glowColor: '255, 0, 51' },
             };
         }
 
         if (isTablet()) {
             return {
-                hero:     { x: 75, y: 40, rotX: 0,   rotY: 0,   rotZ: 0,   scale: 0.8, glowIntensity: 0.7, glowColor: '0, 240, 255' },
+                hero:     { x: 75, y: 40, rotX: 0,   rotY: 0,   rotZ: 0,   scale: 0.8, glowIntensity: 0.7, glowColor: '255, 0, 51' },
                 about:    { x: 85, y: 25, rotX: 30,  rotY: 90,  rotZ: 10,  scale: 0.7, glowIntensity: 0.5, glowColor: '176, 38, 255' },
                 services: { x: 10, y: 35, rotX: 60,  rotY: 180, rotZ: 20,  scale: 0.65, glowIntensity: 0.4, glowColor: '255, 0, 229' },
                 projects: { x: 88, y: 70, rotX: 100, rotY: 270, rotZ: 35,  scale: 0.6, glowIntensity: 0.4, glowColor: '57, 255, 20' },
-                contact:  { x: 50, y: 30, rotX: 140, rotY: 360, rotZ: 45,  scale: 0.7, glowIntensity: 0.6, glowColor: '0, 240, 255' },
+                contact:  { x: 50, y: 30, rotX: 140, rotY: 360, rotZ: 45,  scale: 0.7, glowIntensity: 0.6, glowColor: '255, 0, 51' },
             };
         }
 
         // Desktop keyframes
         return {
-            hero:     { x: 75, y: 45, rotX: 0,   rotY: 0,   rotZ: 0,   scale: 1.0, glowIntensity: 0.8, glowColor: '0, 240, 255' },
+            hero:     { x: 75, y: 45, rotX: 0,   rotY: 0,   rotZ: 0,   scale: 1.0, glowIntensity: 0.8, glowColor: '255, 0, 51' },
             about:    { x: 88, y: 30, rotX: 35,  rotY: 90,  rotZ: 10,  scale: 0.85, glowIntensity: 0.5, glowColor: '176, 38, 255' },
             services: { x: 8,  y: 40, rotX: 70,  rotY: 180, rotZ: 20,  scale: 0.75, glowIntensity: 0.4, glowColor: '255, 0, 229' },
             projects: { x: 90, y: 65, rotX: 110, rotY: 270, rotZ: 35,  scale: 0.7, glowIntensity: 0.4, glowColor: '57, 255, 20' },
-            contact:  { x: 50, y: 35, rotX: 150, rotY: 360, rotZ: 50,  scale: 0.9, glowIntensity: 0.7, glowColor: '0, 240, 255' },
+            contact:  { x: 50, y: 35, rotX: 150, rotY: 360, rotZ: 50,  scale: 0.9, glowIntensity: 0.7, glowColor: '255, 0, 51' },
         };
     }
 
     // ====== INTERPOLATION STATE ======
     const current = { x: 75, y: 45, rotX: 0, rotY: 0, rotZ: 0, scale: 1, glowIntensity: 0.8 };
     let target = { ...current };
-    let currentGlowColor = '0, 240, 255';
+    let currentGlowColor = '255, 0, 51';
 
     // Lerp factor — controls smoothness (lower = smoother but slower)
     const LERP_FACTOR = 0.06;

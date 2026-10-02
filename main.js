@@ -256,7 +256,7 @@
             gridCanvas.height = window.innerHeight;
 
             const gridSize = 60;
-            ctx.strokeStyle = 'rgba(0, 240, 255, 1)';
+            ctx.strokeStyle = 'rgba(255, 0, 51, 1)';
             ctx.lineWidth = 0.5;
 
             // Vertical lines
@@ -377,7 +377,7 @@
     // ====== CONSOLE EASTER EGG ======
     console.log(
         '%c⚡ Portfolio Website ⚡\n%cCrafted with precision.',
-        'color: #00f0ff; font-size: 20px; font-weight: bold; text-shadow: 0 0 10px #00f0ff;',
+        'color: #ff0033; font-size: 20px; font-weight: bold; text-shadow: 0 0 10px #ff0033;',
         'color: #a0a0b5; font-size: 12px;'
     );
 

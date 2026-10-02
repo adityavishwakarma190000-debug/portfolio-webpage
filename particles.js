@@ -26,7 +26,7 @@
         speedMultiplier: 0.15,
         connectionOpacity: 0.06,
         colors: [
-            'rgba(0, 240, 255, ',   // cyan
+            'rgba(255, 0, 51, ',   // cyan
             'rgba(255, 0, 229, ',   // magenta
             'rgba(57, 255, 20, ',   // green
             'rgba(176, 38, 255, ',  // purple
@@ -115,7 +115,7 @@
                     ctx.beginPath();
                     ctx.moveTo(particles[i].x, particles[i].y);
                     ctx.lineTo(particles[j].x, particles[j].y);
-                    ctx.strokeStyle = `rgba(0, 240, 255, ${opacity})`;
+                    ctx.strokeStyle = `rgba(255, 0, 51, ${opacity})`;
                     ctx.lineWidth = 0.5;
                     ctx.stroke();
                 }
