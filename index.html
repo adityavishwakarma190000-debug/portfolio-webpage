@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Creative Developer & Designer</title>
+    <meta name="description" content="Premium portfolio showcasing creative development, design, and cutting-edge digital experiences.">
+    <meta name="keywords" content="developer, designer, portfolio, web development, creative, 3D, technology">
+    <meta name="author" content="Your Name">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- ============================================== -->
+    <!-- SPLINE 3D BACKGROUND (FULL-PAGE, BEHIND EVERYTHING) -->
+    <!-- Replace the URL below with your Spline scene URL -->
+    <!-- ============================================== -->
+    <div id="spline-background">
+        <!-- OPTION 1: Spline Viewer (iframe embed) -->
+        <!-- Uncomment and replace YOUR_SPLINE_URL with your actual Spline scene URL -->
+        <!--
+        <iframe 
+            src="YOUR_SPLINE_URL" 
+            frameborder="0" 
+            width="100%" 
+            height="100%"
+            loading="lazy"
+            title="Spline 3D Background"
+        ></iframe>
+        -->
+
+        <!-- OPTION 2: Spline Runtime (JavaScript) -->
+        <!-- 
+        <canvas id="spline-canvas"></canvas>
+        -->
+
+        <!-- Fallback gradient background (active until Spline is added) -->
+        <div id="spline-fallback"></div>
+    </div>
+
+    <!-- Overlay gradients for text readability -->
+    <div id="bg-overlay"></div>
+
+    <!-- ============================================== -->
+    <!-- SCROLL-DRIVEN 3D FLOATING OBJECT -->
+    <!-- This is the persistent object that travels through the site -->
+    <!-- ============================================== -->
+    <div id="scroll-3d-object" aria-hidden="true">
+        <div class="object-inner">
+            <div class="geo-shape">
+                <div class="cube-face front"></div>
+                <div class="cube-face back"></div>
+                <div class="cube-face right"></div>
+                <div class="cube-face left"></div>
+                <div class="cube-face top"></div>
+                <div class="cube-face bottom"></div>
+            </div>
+            <div class="geo-ring ring-1"></div>
+            <div class="geo-ring ring-2"></div>
+            <div class="geo-ring ring-3"></div>
+        </div>
+        <div class="object-glow"></div>
+    </div>
+
+    <!-- Floating particles layer -->
+    <canvas id="particle-canvas" aria-hidden="true"></canvas>
+
+    <!-- ============================================== -->
+    <!-- NAVIGATION -->
+    <!-- ============================================== -->
+    <nav id="main-nav">
+        <div class="nav-container">
+            <a href="#hero" class="nav-logo" id="nav-logo">
+                <span class="logo-bracket">&lt;</span>
+                <span class="logo-text">PORT</span>
+                <span class="logo-accent">FOLIO</span>
+                <span class="logo-bracket">/&gt;</span>
+            </a>
+            <div class="nav-links" id="nav-links">
+                <a href="#hero" class="nav-link active" data-section="hero">Home</a>
+                <a href="#about" class="nav-link" data-section="about">About</a>
+                <a href="#services" class="nav-link" data-section="services">Services</a>
+                <a href="#projects" class="nav-link" data-section="projects">Projects</a>
+                <a href="#contact" class="nav-link" data-section="contact">Contact</a>
+            </div>
+            <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
+                <span class="toggle-bar"></span>
+                <span class="toggle-bar"></span>
+                <span class="toggle-bar"></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile overlay menu -->
+    <div class="mobile-menu" id="mobile-menu">
+        <div class="mobile-menu-bg"></div>
+        <div class="mobile-menu-content">
+            <a href="#hero" class="mobile-link" data-section="hero">Home</a>
+            <a href="#about" class="mobile-link" data-section="about">About</a>
+            <a href="#services" class="mobile-link" data-section="services">Services</a>
+            <a href="#projects" class="mobile-link" data-section="projects">Projects</a>
+            <a href="#contact" class="mobile-link" data-section="contact">Contact</a>
+        </div>
+    </div>
+
+    <!-- ============================================== -->
+    <!-- SCROLL PROGRESS INDICATOR -->
+    <!-- ============================================== -->
+    <div id="scroll-progress">
+        <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <!-- ============================================== -->
+    <!-- MAIN CONTENT -->
+    <!-- ============================================== -->
+    <main id="main-content">
+
+        <!-- ====== HERO SECTION ====== -->
+        <section id="hero" class="section hero-section" data-scroll-section>
+            <div class="section-content hero-content">
+                <div class="hero-badge">
+                    <span class="badge-dot"></span>
+                    <span class="badge-text">Available for freelance</span>
+                </div>
+                <h1 class="hero-title">
+                    <span class="title-line">
+                        <span class="title-word" data-delay="0">Creative</span>
+                    </span>
+                    <span class="title-line">
+                        <span class="title-word" data-delay="1">Developer</span>
+                        <span class="title-word accent" data-delay="2">&</span>
+                    </span>
+                    <span class="title-line">
+                        <span class="title-word" data-delay="3">Designer</span>
+                    </span>
+                </h1>
+                <p class="hero-subtitle">
+                    <!-- PLACEHOLDER: Replace with your tagline -->
+                    Building next-gen digital experiences with cutting-edge technology. 
+                    Crafting interfaces that push the boundaries of web innovation.
+                </p>
+                <div class="hero-cta">
+                    <a href="#projects" class="btn btn-primary" id="cta-projects">
+                        <span class="btn-text">View Projects</span>
+                        <span class="btn-icon">→</span>
+                    </a>
+                    <a href="#contact" class="btn btn-outline" id="cta-contact">
+                        <span class="btn-text">Get In Touch</span>
+                    </a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="50">0</span><span class="stat-suffix">+</span>
+                        <span class="stat-label">Projects</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="5">0</span><span class="stat-suffix">+</span>
+                        <span class="stat-label">Years Exp.</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="30">0</span><span class="stat-suffix">+</span>
+                        <span class="stat-label">Clients</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Space reserved for your Spline 3D element on the right side -->
+            <div class="hero-3d-space" id="hero-3d-space">
+                <!-- 
+                    DROP YOUR ADDITIONAL 3D ELEMENT HERE 
+                    This space is reserved for a Spline/3D model embed
+                    on the right side of the hero section
+                -->
+            </div>
+            <div class="scroll-indicator" id="scroll-indicator">
+                <div class="scroll-mouse">
+                    <div class="scroll-wheel"></div>
+                </div>
+                <span class="scroll-text">Scroll to explore</span>
+            </div>
+        </section>
+
+        <!-- ====== ABOUT SECTION ====== -->
+        <section id="about" class="section about-section" data-scroll-section>
+            <div class="section-header">
+                <span class="section-tag">&lt;about&gt;</span>
+                <h2 class="section-title">
+                    <span class="title-accent">Who</span> I Am
+                </h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="section-content about-content">
+                <div class="about-text">
+                    <p class="about-intro">
+                        <!-- PLACEHOLDER: Replace with your intro -->
+                        I'm a passionate developer and designer who merges creativity with technology 
+                        to build immersive digital experiences. With expertise spanning front-end 
+                        development, UI/UX design, and 3D web experiences, I bring ideas to life 
+                        through code and pixels.
+                    </p>
+                    <p class="about-detail">
+                        <!-- PLACEHOLDER: Replace with more details -->
+                        My approach combines technical precision with artistic vision. 
+                        I believe in pushing boundaries and creating digital products that 
+                        don't just work — they inspire.
+                    </p>
+                    <div class="about-tech-stack">
+                        <h3 class="tech-title">Tech Stack</h3>
+                        <div class="tech-grid">
+                            <!-- PLACEHOLDER: Replace with your actual tech stack -->
+                            <div class="tech-item"><span class="tech-icon">⚡</span>JavaScript</div>
+                            <div class="tech-item"><span class="tech-icon">⚛️</span>React</div>
+                            <div class="tech-item"><span class="tech-icon">🔺</span>Three.js</div>
+                            <div class="tech-item"><span class="tech-icon">🎨</span>Figma</div>
+                            <div class="tech-item"><span class="tech-icon">🟢</span>Node.js</div>
+                            <div class="tech-item"><span class="tech-icon">🐍</span>Python</div>
+                            <div class="tech-item"><span class="tech-icon">🗄️</span>MongoDB</div>
+                            <div class="tech-item"><span class="tech-icon">☁️</span>AWS</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Space reserved for 3D element / image -->
+                <div class="about-3d-space" id="about-3d-space">
+                    <!-- 
+                        DROP YOUR ADDITIONAL 3D ELEMENT OR PHOTO HERE 
+                    -->
+                    <div class="about-image-placeholder">
+                        <div class="placeholder-frame">
+                            <span class="placeholder-text">Your Photo / 3D Element</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <span class="section-tag section-tag-close">&lt;/about&gt;</span>
+        </section>
+
+        <!-- ====== SERVICES SECTION ====== -->
+        <section id="services" class="section services-section" data-scroll-section>
+            <div class="section-header">
+                <span class="section-tag">&lt;services&gt;</span>
+                <h2 class="section-title">
+                    <span class="title-accent">What</span> I Do
+                </h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="section-content services-content">
+                <div class="services-grid">
+                    <!-- PLACEHOLDER: Replace with your actual services -->
+                    <div class="service-card" data-service="1">
+                        <div class="service-icon-wrap">
+                            <div class="service-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="service-number">01</div>
+                        <h3 class="service-title">Web Development</h3>
+                        <p class="service-desc">
+                            Building high-performance, responsive web applications 
+                            with modern frameworks and cutting-edge technology.
+                        </p>
+                        <div class="service-tags">
+                            <span class="service-tag">React</span>
+                            <span class="service-tag">Next.js</span>
+                            <span class="service-tag">Node.js</span>
+                        </div>
+                    </div>
+
+                    <div class="service-card" data-service="2">
+                        <div class="service-icon-wrap">
+                            <div class="service-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="service-number">02</div>
+                        <h3 class="service-title">UI/UX Design</h3>
+                        <p class="service-desc">
+                            Designing intuitive, visually stunning interfaces that 
+                            deliver exceptional user experiences across all platforms.
+                        </p>
+                        <div class="service-tags">
+                            <span class="service-tag">Figma</span>
+                            <span class="service-tag">Prototyping</span>
+                            <span class="service-tag">Design Systems</span>
+                        </div>
+                    </div>
+
+                    <div class="service-card" data-service="3">
+                        <div class="service-icon-wrap">
+                            <div class="service-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+                                    <polyline points="14 2 14 8 20 8"/>
+                                    <line x1="16" y1="13" x2="8" y2="13"/>
+                                    <line x1="16" y1="17" x2="8" y2="17"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="service-number">03</div>
+                        <h3 class="service-title">3D & Interactive</h3>
+                        <p class="service-desc">
+                            Creating immersive 3D web experiences using WebGL, 
+                            Three.js, and Spline for next-level digital presence.
+                        </p>
+                        <div class="service-tags">
+                            <span class="service-tag">Three.js</span>
+                            <span class="service-tag">Spline</span>
+                            <span class="service-tag">WebGL</span>
+                        </div>
+                    </div>
+
+                    <div class="service-card" data-service="4">
+                        <div class="service-icon-wrap">
+                            <div class="service-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <line x1="2" y1="12" x2="22" y2="12"/>
+                                    <path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="service-number">04</div>
+                        <h3 class="service-title">Full Stack Solutions</h3>
+                        <p class="service-desc">
+                            End-to-end development from concept to deployment, 
+                            including APIs, databases, and cloud infrastructure.
+                        </p>
+                        <div class="service-tags">
+                            <span class="service-tag">APIs</span>
+                            <span class="service-tag">Cloud</span>
+                            <span class="service-tag">DevOps</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <span class="section-tag section-tag-close">&lt;/services&gt;</span>
+        </section>
+
+        <!-- ====== PROJECTS SECTION ====== -->
+        <section id="projects" class="section projects-section" data-scroll-section>
+            <div class="section-header">
+                <span class="section-tag">&lt;projects&gt;</span>
+                <h2 class="section-title">
+                    <span class="title-accent">Featured</span> Work
+                </h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="section-content projects-content">
+                <div class="projects-grid">
+                    <!-- PLACEHOLDER: Replace with your actual projects -->
+                    <article class="project-card" data-project="1">
+                        <div class="project-image">
+                            <div class="project-image-placeholder">
+                                <span>Project 01 Screenshot</span>
+                            </div>
+                            <div class="project-overlay">
+                                <a href="#" class="project-link" target="_blank" rel="noopener">
+                                    <span>View Live</span>
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <div class="project-meta">
+                                <span class="project-category">Web App</span>
+                                <span class="project-year">2024</span>
+                            </div>
+                            <h3 class="project-title">Project Name One</h3>
+                            <p class="project-desc">
+                                Brief description of the project, technologies used, 
+                                and the problem it solves.
+                            </p>
+                            <div class="project-tech">
+                                <span class="tech-badge">React</span>
+                                <span class="tech-badge">Node.js</span>
+                                <span class="tech-badge">MongoDB</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="project-card" data-project="2">
+                        <div class="project-image">
+                            <div class="project-image-placeholder">
+                                <span>Project 02 Screenshot</span>
+                            </div>
+                            <div class="project-overlay">
+                                <a href="#" class="project-link" target="_blank" rel="noopener">
+                                    <span>View Live</span>
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <div class="project-meta">
+                                <span class="project-category">Mobile App</span>
+                                <span class="project-year">2024</span>
+                            </div>
+                            <h3 class="project-title">Project Name Two</h3>
+                            <p class="project-desc">
+                                Brief description of the project, technologies used, 
+                                and the problem it solves.
+                            </p>
+                            <div class="project-tech">
+                                <span class="tech-badge">React Native</span>
+                                <span class="tech-badge">Firebase</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="project-card" data-project="3">
+                        <div class="project-image">
+                            <div class="project-image-placeholder">
+                                <span>Project 03 Screenshot</span>
+                            </div>
+                            <div class="project-overlay">
+                                <a href="#" class="project-link" target="_blank" rel="noopener">
+                                    <span>View Live</span>
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <div class="project-meta">
+                                <span class="project-category">3D Experience</span>
+                                <span class="project-year">2023</span>
+                            </div>
+                            <h3 class="project-title">Project Name Three</h3>
+                            <p class="project-desc">
+                                Brief description of the project, technologies used, 
+                                and the problem it solves.
+                            </p>
+                            <div class="project-tech">
+                                <span class="tech-badge">Three.js</span>
+                                <span class="tech-badge">GSAP</span>
+                                <span class="tech-badge">WebGL</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="project-card" data-project="4">
+                        <div class="project-image">
+                            <div class="project-image-placeholder">
+                                <span>Project 04 Screenshot</span>
+                            </div>
+                            <div class="project-overlay">
+                                <a href="#" class="project-link" target="_blank" rel="noopener">
+                                    <span>View Live</span>
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <div class="project-meta">
+                                <span class="project-category">Dashboard</span>
+                                <span class="project-year">2023</span>
+                            </div>
+                            <h3 class="project-title">Project Name Four</h3>
+                            <p class="project-desc">
+                                Brief description of the project, technologies used, 
+                                and the problem it solves.
+                            </p>
+                            <div class="project-tech">
+                                <span class="tech-badge">Vue.js</span>
+                                <span class="tech-badge">D3.js</span>
+                                <span class="tech-badge">Python</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+            <span class="section-tag section-tag-close">&lt;/projects&gt;</span>
+        </section>
+
+        <!-- ====== CONTACT SECTION ====== -->
+        <section id="contact" class="section contact-section" data-scroll-section>
+            <div class="section-header">
+                <span class="section-tag">&lt;contact&gt;</span>
+                <h2 class="section-title">
+                    <span class="title-accent">Let's</span> Connect
+                </h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="section-content contact-content">
+                <div class="contact-text">
+                    <p class="contact-intro">
+                        Have a project in mind? Let's create something extraordinary together.
+                    </p>
+                    <div class="contact-links">
+                        <!-- PLACEHOLDER: Replace with your actual links -->
+                        <a href="mailto:your@email.com" class="contact-link-item" id="contact-email">
+                            <div class="contact-link-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                    <polyline points="22,6 12,13 2,6"/>
+                                </svg>
+                            </div>
+                            <div class="contact-link-info">
+                                <span class="contact-link-label">Email</span>
+                                <span class="contact-link-value">your@email.com</span>
+                            </div>
+                            <span class="contact-link-arrow">→</span>
+                        </a>
+                        <a href="https://github.com/yourusername" class="contact-link-item" id="contact-github" target="_blank" rel="noopener">
+                            <div class="contact-link-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/>
+                                </svg>
+                            </div>
+                            <div class="contact-link-info">
+                                <span class="contact-link-label">GitHub</span>
+                                <span class="contact-link-value">github.com/yourusername</span>
+                            </div>
+                            <span class="contact-link-arrow">→</span>
+                        </a>
+                        <a href="https://linkedin.com/in/yourusername" class="contact-link-item" id="contact-linkedin" target="_blank" rel="noopener">
+                            <div class="contact-link-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/>
+                                    <circle cx="4" cy="4" r="2"/>
+                                </svg>
+                            </div>
+                            <div class="contact-link-info">
+                                <span class="contact-link-label">LinkedIn</span>
+                                <span class="contact-link-value">linkedin.com/in/yourusername</span>
+                            </div>
+                            <span class="contact-link-arrow">→</span>
+                        </a>
+                        <a href="https://twitter.com/yourusername" class="contact-link-item" id="contact-twitter" target="_blank" rel="noopener">
+                            <div class="contact-link-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/>
+                                </svg>
+                            </div>
+                            <div class="contact-link-info">
+                                <span class="contact-link-label">Twitter / X</span>
+                                <span class="contact-link-value">@yourusername</span>
+                            </div>
+                            <span class="contact-link-arrow">→</span>
+                        </a>
+                    </div>
+                </div>
+                <!-- Space reserved for 3D element -->
+                <div class="contact-3d-space" id="contact-3d-space">
+                    <!-- 
+                        DROP YOUR ADDITIONAL 3D ELEMENT HERE 
+                    -->
+                </div>
+            </div>
+            <span class="section-tag section-tag-close">&lt;/contact&gt;</span>
+        </section>
+
+    </main>
+
+    <!-- ============================================== -->
+    <!-- FOOTER -->
+    <!-- ============================================== -->
+    <footer id="footer">
+        <div class="footer-content">
+            <div class="footer-top">
+                <div class="footer-logo">
+                    <span class="logo-bracket">&lt;</span>
+                    <span class="logo-text">PORT</span>
+                    <span class="logo-accent">FOLIO</span>
+                    <span class="logo-bracket">/&gt;</span>
+                </div>
+                <p class="footer-tagline">Crafting Digital Futures</p>
+            </div>
+            <div class="footer-divider"></div>
+            <div class="footer-bottom">
+                <p class="footer-copy">&copy; 2024 — All rights reserved</p>
+                <p class="footer-credit">Designed & Built with <span class="heart">♥</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ============================================== -->
+    <!-- CUSTOM CURSOR -->
+    <!-- ============================================== -->
+    <div class="custom-cursor" id="cursor-dot"></div>
+    <div class="custom-cursor-ring" id="cursor-ring"></div>
+
+    <!-- Scripts -->
+    <script src="particles.js"></script>
+    <script src="scroll3d.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
