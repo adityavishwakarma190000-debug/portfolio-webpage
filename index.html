@@ -20,23 +20,9 @@
 
     <!-- ============================================== -->
     <!-- SPLINE 3D BACKGROUND (FULL-PAGE, BEHIND EVERYTHING) -->
-    <!-- Replace the URL below with your Spline scene URL -->
     <!-- ============================================== -->
     <div id="spline-background">
-        <!-- OPTION 1: Spline Viewer (iframe embed) -->
-        <!-- Uncomment and replace YOUR_SPLINE_URL with your actual Spline scene URL -->
-        <!--
-        <iframe 
-            src="YOUR_SPLINE_URL" 
-            frameborder="0" 
-            width="100%" 
-            height="100%"
-            loading="lazy"
-            title="Spline 3D Background"
-        ></iframe>
-        -->
-
-        <!-- OPTION 2: Spline Runtime (JavaScript) -->
+        <!-- SPLINE 3D BACKGROUND via Spline Runtime -->
         <canvas id="spline-canvas"></canvas>
         <script type="module">
             import { Application } from 'https://unpkg.com/@splinetool/runtime@1.9.59/build/runtime.js';
